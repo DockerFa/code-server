@@ -1,0 +1,15 @@
+version: "3.1"
+
+services:
+  vscode:
+    container_name: vscode
+    image: codercom/code-server
+    ports:
+      - "8080:8080"
+    volumes:
+      - $PWD/.config:/home/coder/.config
+      - $HOME:/home/coder/project
+      - $PWD/code-server:/home/coder/.local/share/code-server
+    environment:
+      - "DOCKER_USER=${USER}"
+    user: ${UID_GID}
